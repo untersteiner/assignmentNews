@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 
 function Nav() {
+
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <nav className="bg-gray-800">

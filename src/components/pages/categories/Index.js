@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CategoryCard from './CategoryCard';
+import { DataContext } from "../../../context/DataContext";
 
 const Index = () => {
+
+  const {data} = useContext(DataContext);
+
+  const [cat, setCat] = useState([]);
+
+  useEffect(() => {
+    var arr = [];
+
+    for (const item in data) {
+      arr.push(data[item].category);
+    }
+
+    setCat(arr.filter((v, i, a) => a.indexOf(v) === i));
+    
+  }, [data])
+     
   return (
     <>
     <header className="bg-white shadow">
@@ -13,18 +30,13 @@ const Index = () => {
     <main>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <div className="px-4 py-6 sm:px-0 flex flex-wrap">
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
+              {
+                cat.length === 0 
+                ? 
+                  "cargando" 
+                : 
+                  cat.map(cat => <CategoryCard key={cat} cat={cat}/>)
+              }
             </div>
         </div>
     </main>
