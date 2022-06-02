@@ -5,7 +5,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import './index.css';
+import './styles/index.css';
 import Categories from './components/pages/categories/Index';
 import Tops from './components/pages/tops/Index';
 import Recents from './components/pages/recents/Index';

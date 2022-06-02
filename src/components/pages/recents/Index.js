@@ -16,33 +16,23 @@ const Index = () => {
       }
 
     arr.sort((a,b) => {
-
       if(Date.parse(a.createdAt) < Date.parse(b.createdAt) ) return 1;
-
       if(Date.parse(a.createdAt)  > Date.parse(b.createdAt)) return -1;
-
       return 0;
     });
 
     setRecents(arr);
-    
   }, [data])
      
   return (
     <>
-    <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Recent news</h1>
-        </div>
-    </header>
-    
     <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-            <div className="px-4 py-6 sm:px-0  flex flex-wrap">
+        <div className="max-w-7xl mx-auto py-1 sm:px-6 lg:px-8">
+            <div className="px-4 sm:px-0  flex flex-wrap">
               {
                 recents.length === 0 
                 ? 
-                  "cargando" 
+                  "Cargando..." 
                 : 
                 recents.map(recent => <GeneralCard key={recent.id} recent={recent}/>)
               }

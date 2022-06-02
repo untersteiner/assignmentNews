@@ -1,15 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 const CategoryCard = ({cat}) => {
+
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg mr-8 my-2">
-        <img className="h-100 w-80" src="https://elcomercio.pe/resizer/nYAA6vYIqWnVbWOf_wdIIEE8NXs=/980x0/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/5YPIC23UZNFNLIPABRQC462TS4.jpg" alt="Sunset in the mountains"></img>
+        <img className="h-100 w-80" src={require(`../../../assets/Thumbnail_channel_${cat}.png`)} alt="Caregory"></img>
         <div className="px-6 py-4">
-            <a 
-                href='/'
-                className="text-gray-700 text-base">
-                {cat}
-            </a>
+            <p className="text-purple font-sans text-xs">
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </p>
         </div>
     </div>
   )
