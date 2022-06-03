@@ -23,4 +23,5 @@ Install the dependencies and start the server.
 ```sh
 cd assignmentNews
 npm i
+npm start
 ```
