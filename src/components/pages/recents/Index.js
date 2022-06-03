@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import GeneralCard from '../GeneralCard';
-import { DataContext } from "../../../context/DataContext";
+import { DataContext } from '../../../context/DataContext';
+import Loading from '../Loading';
 
 const Index = () => {
 
-  const {data} = useContext(DataContext);
+  const {data} = useContext(DataContext); //Consume the data from the context
   
   const [recents, setRecents] = useState([]);
 
@@ -12,14 +13,14 @@ const Index = () => {
     var arr = [];
 
     for (const item in data) {
-        arr.push(data[item]);
+        arr.push(data[item]);//Convert object to array to use cheap methods
       }
 
     arr.sort((a,b) => {
       if(Date.parse(a.createdAt) < Date.parse(b.createdAt) ) return 1;
       if(Date.parse(a.createdAt)  > Date.parse(b.createdAt)) return -1;
       return 0;
-    });
+    }); //Sort data using dates, before passed from string to date
 
     setRecents(arr);
   }, [data])
@@ -32,9 +33,9 @@ const Index = () => {
               {
                 recents.length === 0 
                 ? 
-                  "Cargando..." 
+                  <Loading />
                 : 
-                recents.map(recent => <GeneralCard key={recent.id} recent={recent}/>)
+                  recents.map(recent => <GeneralCard key={recent.id} recent={recent}/>)
               }
             </div>
         </div>

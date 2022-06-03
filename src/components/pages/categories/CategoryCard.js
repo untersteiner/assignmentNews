@@ -7,11 +7,11 @@ const CategoryCard = ({cat}) => {
         <img className="h-100 w-80" src={require(`../../../assets/Thumbnail_channel_${cat}.png`)} alt="Caregory"></img>
         <div className="px-6 py-4">
             <p className="text-purple font-sans text-xs">
-                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                {cat.charAt(0).toUpperCase() + cat.slice(1)} {/*Trick to capitalize the first letter*/}
             </p>
         </div>
     </div>
   )
 }
 
-export default CategoryCard
+export default CategoryCard;

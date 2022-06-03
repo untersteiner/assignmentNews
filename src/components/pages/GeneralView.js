@@ -8,15 +8,16 @@ const GeneralView = () => {
 
   const [search, setSearch] = useState({});
 
-  let params = useParams();
+  let params = useParams(); //take the param (id in this case) from the url
 
   useEffect(() => {
 
     for (const item in data) {
         if (data[item].id === params.idNew) {
           setSearch(data[item])
+          break;
         }
-      }
+      } //Use a for loop to find the news and store it in the state, using the id taken with the useParams method
 
   }, [data])
 

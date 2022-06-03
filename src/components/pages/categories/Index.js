@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import CategoryCard from './CategoryCard';
 import { DataContext } from "../../../context/DataContext";
+import Loading from '../Loading';
 
 const Index = () => {
 
-  const {data} = useContext(DataContext);
+  const {data} = useContext(DataContext); //Consume the data from the context
 
   const [cat, setCat] = useState([]);
 
@@ -12,13 +13,13 @@ const Index = () => {
     var arr = [];
 
     for (const item in data) {
-      arr.push(data[item].category);
+      arr.push(data[item].category); //Convert object to array to use cheap methods
     }
 
-    setCat(arr.filter((v, i, a) => a.indexOf(v) === i));
+    setCat(arr.filter((v, i, a) => a.indexOf(v) === i));//Filter the array to get the unique data and save it in the state
     
   }, [data])
-     
+
   return (
     <>
     <header className="bg-white">
@@ -33,9 +34,9 @@ const Index = () => {
               {
                 cat.length === 0 
                 ? 
-                  "Cargando..." 
+                  <Loading /> 
                 : 
-                  cat.map(cat => <CategoryCard key={cat} cat={cat}/>)
+                  cat.map(cat => <CategoryCard key={cat} cat={cat}/>) 
               }
             </div>
         </div>

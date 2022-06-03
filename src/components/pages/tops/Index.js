@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import GeneralCard from '../GeneralCard';
 import { DataContext } from "../../../context/DataContext";
+import Loading from '../Loading';
 
 const Index = () => {
 
-  const {data} = useContext(DataContext);
+  const {data} = useContext(DataContext);//Consume the data from the context
 
   const [tops, setTops] = useState([]);
 
@@ -12,14 +13,14 @@ const Index = () => {
     var arr = [];
 
     for (const item in data) {
-        arr.push(data[item]);
+        arr.push(data[item]); //Convert object to array to use cheap methods
       }
 
     arr.sort((a,b) => {
       if(a.views < b.views) return 1;
       if(a.views  > b.views) return -1;
       return 0;
-    });
+    }); //Sort data using views
 
     setTops(arr);
   }, [data])
@@ -32,9 +33,9 @@ const Index = () => {
             {
                 tops.length === 0 
                 ? 
-                  "Cargando..." 
+                  <Loading /> 
                 : 
-                tops.map(recent => <GeneralCard key={recent.id} recent={recent}/>)
+                  tops.map(recent => <GeneralCard key={recent.id} recent={recent}/>)
               }
             </div>
         </div>
